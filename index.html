@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PulseAI — Next Gen Digital Intelligence</title>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* CSS Variables & Modern Reset */
+    :root {
+      --bg: #090d16;
+      --bg-card: rgba(255, 255, 255, 0.03);
+      --bg-card-hover: rgba(255, 255, 255, 0.06);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(99, 102, 241, 0.3);
+      --primary: #6366f1;
+      --primary-hover: #4f46e5;
+      --accent: #06b6d4;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --glow: rgba(99, 102, 241, 0.18);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* Ambient Background Glow */
+    .bg-glow-1 {
+      position: absolute;
+      top: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 450px;
+      background: radial-gradient(circle, var(--glow) 0%, rgba(9, 13, 22, 0) 70%);
+      filter: blur(80px);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(14px);
+      background: rgba(9, 13, 22, 0.75);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-main);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-badge {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 16px;
+      color: #fff;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 32px;
+    }
+
+    .nav-menu a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-menu a:hover {
+      color: var(--text-main);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: 9999px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), #4338ca);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(99, 102, 241, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(99, 102, 241, 0.5);
+    }
+
+    .btn-secondary {
+      background: var(--bg-card);
+      color: var(--text-main);
+      border-color: var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 90px 0 60px;
+      position: relative;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(99, 102, 241, 0.1);
+      border: 1px solid var(--border-accent);
+      padding: 6px 16px;
+      border-radius: 9999px;
+      font-size: 13px;
+      color: #a5b4fc;
+      margin-bottom: 24px;
+    }
+
+    .pill-dot {
+      width: 6px;
+      height: 6px;
+      background: #34d399;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #34d399;
+    }
+
+    .hero h1 {
+      font-size: 56px;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -1.5px;
+      max-width: 820px;
+      margin: 0 auto 20px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #fff 30%, #94a3b8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 620px;
+      margin: 0 auto 36px;
+      font-weight: 400;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    /* Metrics Strip */
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      padding: 40px;
+      margin-top: 60px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    .metric-item h3 {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+
+    .metric-item p {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Features Section */
+    .features-section {
+      padding: 100px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 580px;
+      margin: 0 auto 60px;
+    }
+
+    .section-tag {
+      color: var(--primary);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .section-header h2 {
+      font-size: 36px;
+      letter-spacing: -1px;
+      margin-bottom: 14px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card:hover {
+      border-color: rgba(99, 102, 241, 0.4);
+      background: var(--bg-card-hover);
+      transform: translateY(-4px);
+    }
+
+    .icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(99, 102, 241, 0.12);
+      border: 1px solid var(--border-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .feature-card h4 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .feature-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* CTA Section */
+    .cta-banner {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(6, 182, 212, 0.05));
+      border: 1px solid var(--border-accent);
+      border-radius: 20px;
+      padding: 60px 40px;
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .cta-banner h2 {
+      font-size: 34px;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .cta-banner p {
+      color: var(--text-muted);
+      margin-bottom: 28px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 30px 0;
+      color: var(--text-muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    /* Responsive Queries */
+    @media (max-width: 900px) {
+      .hero h1 { font-size: 40px; }
+      .metrics { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+      .features-grid { grid-template-columns: 1fr; }
+      .nav-menu { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-glow-1"></div>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="container nav-inner">
+      <a href="#" class="logo">
+        <div class="logo-badge">P</div>
+        PulseAI
+      </a>
+      <ul class="nav-menu">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#metrics">Platform</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#get-started" class="btn btn-primary">Start Free Trial</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero container">
+    <div class="pill">
+      <span class="pill-dot"></span> v2.4 Live: Automated Cloud Sync
+    </div>
+    <h1>The Smart Operating System For <span class="gradient-text">Modern Web Teams</span></h1>
+    <p>Automate repetitive workflows, optimize performance in real time, and scale your infrastructure without touching complex setups.</p>
+    <div class="hero-actions">
+      <a href="#get-started" class="btn btn-primary">Get Started Free →</a>
+      <a href="#features" class="btn btn-secondary">Explore Architecture</a>
+    </div>
+
+    <!-- Metrics Strip -->
+    <div class="metrics" id="metrics">
+      <div class="metric-item">
+        <h3>99.99%</h3>
+        <p>Uptime SLA</p>
+      </div>
+      <div class="metric-item">
+        <h3>&lt; 40ms</h3>
+        <p>Global Latency</p>
+      </div>
+      <div class="metric-item">
+        <h3>10M+</h3>
+        <p>Events / Sec</p>
+      </div>
+      <div class="metric-item">
+        <h3>4.9/5</h3>
+        <p>Client Rating</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Grid -->
+  <section class="features-section container" id="features">
+    <div class="section-header">
+      <div class="section-tag">ENGINEERED FOR SCALE</div>
+      <h2>Designed for effortless delivery & maximum conversion</h2>
+      <p style="color: var(--text-muted); font-size: 15px;">A clean and modular foundation built strictly adhering to modern HTML5 & CSS3 semantic standards.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="icon-box">⚡</div>
+        <h4>Instant Cold Boots</h4>
+        <p>Built-in micro-optimizations cut page bundle weights by 70%, boosting Google PageSpeed score to 99+.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-box">🛡️</div>
+        <h4>Automated Compliance</h4>
+        <p>Enterprise grade security layers integrated right out of the box with zero configuration overhead.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-box">📱</div>
+        <h4>Fluid Responsive Layout</h4>
+        <p>Strictly tested across mobile viewports, high-res tablets, and 4K displays for a flawless look.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Box -->
+  <div class="container" id="get-started">
+    <div class="cta-banner">
+      <h2>Ready to build something extraordinary?</h2>
+      <p>Clean HTML structure, lightweight styling, and immediate setup ready for any business.</p>
+      <a href="#" class="btn btn-primary" style="padding: 12px 30px;">Request a Custom Build</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2026 PulseAI Systems. Crafted with semantic HTML5 & responsive CSS.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
+
